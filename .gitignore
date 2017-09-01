@@ -189,6 +189,8 @@ $RECYCLE.BIN/
 #############
 
 *.py[cod]
+*.pyc
+secrets.py
 
 # Packages
 *.egg
