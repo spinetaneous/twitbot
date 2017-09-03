@@ -1,5 +1,4 @@
 import tweepy #twitter API
-import re #regex library
 from secrets import * #get keys from secrets.py
 
 #OAuth authentication
@@ -13,8 +12,6 @@ api = tweepy.API(auth)
 #for now, the swear word is hard coded just to test things out
 search_results = api.search("hell", "en", "en", 1)
 
-#create re object so tweets will exclude @'s
-#re_obj = re.compile('[@]')
-
-#prints first tweet
-print(search_results[0].text)
+for tweet in search_results:
+    if '@' not in tweet.text:
+        print(tweet.text)
