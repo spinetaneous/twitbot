@@ -9,7 +9,7 @@ api = tweepy.API(auth)
 #api.update_status("GEE WHIZ I CAN TWEET NOW")
 
 #find a tweet with a swear word
-#for now, the swear word is hard coded just to test things out
+#for now, the swear word is hard coded just to test things out #FIXME
 search_results = api.search("hell", "en", "en", 1)
 
 """
@@ -18,7 +18,7 @@ it's a lonely tweet because it doesn't mention anyone or have media
 this is so that i don't bother anyone while i'm testing the bot
 @param search_results: a list of Search Results objects
 @return tweet: the original tweet with swear words that will be changed later
-"""
+""" #FIXME be able to tweet with mentions and links
 def find_lonely_tweet(search_results):
     for tweet in search_results: #go through search_results...
         if '@' and 'https' not in tweet.text: #...and find a tweet that isn't a mention
