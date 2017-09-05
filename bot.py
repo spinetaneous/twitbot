@@ -27,19 +27,11 @@ def find_lonely_tweet(search_results):
 """
 censors tweet with a silly swear word using censor()
 @param tweet: a Search Result; the tweet to be changed
-@return new_tweet: a freshly censored tweet
+@return tweet: a freshly censored tweet (the same tweet as before)
 """ #FIXME do this with regex ? ? ?
 def change_tweet(tweet):
-    new_tweet = tweet #create copy of tweet
-    words = tweet.text.split() #words in the current original tweet
-    new_words = ["" for x in range(len(words))] #the words that will comprise the new tweet
-    for _ in range(len(words)):
-        if "hell" in words[_]:
-            new_words[_] = "h-e-double-hockey-sticks"
-        else:
-            new_words[_] = words[_]
-    new_tweet.text = " ".join(new_words)
-    return new_tweet
+    tweet.text = censor(tweet.text)
+    return tweet
 
 """
 takes in a string with swear words, censors & capitalizes it
@@ -47,13 +39,21 @@ takes in a string with swear words, censors & capitalizes it
 @return new: censored string in all caps bc bot likes to scream
 """
 def censor(orig):
-    orig_words = orig.lower().split()
-    return orig_words
+    orig_words = orig.lower().split() #list of words in original string
+    new_words = ["" for x in range(len(orig_words))] #words that will comprise new string
 
-"""
+    for _ in range(len(orig_words)):
+        if "hell" in orig_words[_]:
+            new_words[_] = "heck" #replace hell with heck
+        else:
+            new_words[_] = orig_words[_] #otherwise don't change the word
+        new_words[_] = new_words[_].upper() #capitalize word
+
+    new = " ".join(new_words) #create new string
+    return new
+
 orig_tweet = find_lonely_tweet(search_results)
 new_tweet = change_tweet(orig_tweet)
 print(new_tweet.text)
-"""
 
 #api.update_status(new_tweet.text.upper())
