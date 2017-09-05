@@ -1,3 +1,6 @@
+"""
+the 'brain' of the bot
+"""
 import tweepy #twitter API
 from secrets import * #get keys from secrets.py
 
@@ -38,6 +41,7 @@ takes in a string with swear words, censors & capitalizes it
 @param orig: string to be censored
 @return new: censored string in all caps bc bot likes to scream
 """
+#FIXME censorship erases punctuation e.g. hell!!!! -> HECK
 def censor(orig):
     orig_words = orig.lower().split() #list of words in original string
     new_words = ["" for x in range(len(orig_words))] #words that will comprise new string

@@ -1,3 +1,6 @@
+"""
+test suite for bot.py
+"""
 import unittest
 import bot
 
