@@ -2,11 +2,11 @@ import unittest
 import bot
 
 """ tests the various methods in bot.py """
-class TestBotMethods(unittest.testCase):
+class TestBotMethods(unittest.TestCase):
 
-    """ test change_tweet() """
-    def test_change_tweet(self):
-        pass
+    """ test censor() """
+    def test_censor(self):
+        self.assertEqual(bot.censor("THIS IS A STRING"), ["this", "is", "a", "string"])
 
 if __name__ == '__main__':
     unittest.main()

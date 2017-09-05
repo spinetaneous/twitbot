@@ -25,7 +25,7 @@ def find_lonely_tweet(search_results):
             return tweet
 
 """
-censors tweet with a silly swear word
+censors tweet with a silly swear word using censor()
 @param tweet: a Search Result; the tweet to be changed
 @return new_tweet: a freshly censored tweet
 """ #FIXME do this with regex ? ? ?
@@ -41,8 +41,19 @@ def change_tweet(tweet):
     new_tweet.text = " ".join(new_words)
     return new_tweet
 
+"""
+takes in a string with swear words, censors & capitalizes it
+@param orig: string to be censored
+@return new: censored string in all caps bc bot likes to scream
+"""
+def censor(orig):
+    orig_words = orig.lower().split()
+    return orig_words
+
+"""
 orig_tweet = find_lonely_tweet(search_results)
 new_tweet = change_tweet(orig_tweet)
 print(new_tweet.text)
+"""
 
 #api.update_status(new_tweet.text.upper())
