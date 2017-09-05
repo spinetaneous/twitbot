@@ -26,9 +26,6 @@ def find_lonely_tweet(search_results):
 
 """
 censors tweet with a silly swear word
-i know that there are better ways to do this but i just want to see if it works
-also it's almost 3AM sue me
-jk don't do that i'm a poor college student
 @param tweet: a Search Result; the tweet to be changed
 @return new_tweet: a freshly censored tweet
 """ #FIXME do this with regex ? ? ?
@@ -48,4 +45,4 @@ orig_tweet = find_lonely_tweet(search_results)
 new_tweet = change_tweet(orig_tweet)
 print(new_tweet.text)
 
-api.update_status(new_tweet.text.upper())
+#api.update_status(new_tweet.text.upper())
