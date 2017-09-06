@@ -4,10 +4,11 @@ a dictionary of all the swear words that the bot will censor
 each entry is in the following format:
     swear : [list, of, replacement, words]
 """
+#FIXME when tweeting @ ppl using many swear words say "your mother would be ashamed"
 
 words = {
+"hella" : ["a hecka lotta"],
 "hell" : ["heck", "h-e-double-hockey-sticks"],
-"hella" : ["a heck of a lot"], #FIXME switching hell and hella -> mistranslation
 "fucker" : ["fricker"],
 "fuck" : ["frick", "fudge"],
 "shit" : ["turd", "shoot", "sheesh"],
