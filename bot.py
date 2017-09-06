@@ -25,9 +25,10 @@ def find_lonely_tweet(search_results):
     @return tweet: the original tweet with swear words that will be changed later
     """
     for tweet in search_results: #go through search_results...
-        if "@" and "https" and "RT" not in tweet.text: #...and find a tweet that isn't a mention
+        if "@" not in tweet.text and "https" not in tweet.text and "RT" not in tweet.text: #...and find a tweet that isn't a mention
             return tweet
             #FIXME what to do if can't find tweet?
+
 def change_tweet(tweet):
     #FIXME do this with regex ? ? ?
     """
