@@ -15,36 +15,36 @@ api = tweepy.API(auth)
 #find a tweet with a swear word
 #for now, the swear word is hard coded just to test things out #FIXME
 search_results = api.search("hell", "en", "en", 1)
-
-"""
-goes through a list of tweets and finds one that isn't a mention
-it's a lonely tweet because it doesn't mention anyone or have media
-this is so that i don't bother anyone while i'm testing the bot
-@param search_results: a list of Search Results objects
-@return tweet: the original tweet with swear words that will be changed later
-""" #FIXME be able to tweet with mentions and links
 def find_lonely_tweet(search_results):
+    #FIXME be able to tweet with mentions and links
+    """
+    goes through a list of tweets and finds one that isn't a mention
+    it's a lonely tweet because it doesn't mention anyone or have media
+    this is so that i don't bother anyone while i'm testing the bot
+    @param search_results: a list of Search Results objects
+    @return tweet: the original tweet with swear words that will be changed later
+    """
     for tweet in search_results: #go through search_results...
         if "@" and "https" and "RT" not in tweet.text: #...and find a tweet that isn't a mention
             return tweet
             #FIXME what to do if can't find tweet?
-
-"""
-censors tweet with a silly swear word using censor()
-@param tweet: a Search Result; the tweet to be changed
-@return tweet: a freshly censored tweet (the same tweet as before)
-""" #FIXME do this with regex ? ? ?
 def change_tweet(tweet):
+    #FIXME do this with regex ? ? ?
+    """
+    censors tweet with a silly swear word using censor()
+    @param tweet: a Search Result; the tweet to be changed
+    @return tweet: a freshly censored tweet (the same tweet as before)
+    """
     tweet.text = censor(tweet.text)
     return tweet
 
-"""
-takes in a string with swear words, censors & capitalizes it
-@param orig: string to be censored
-@return new: censored string in all caps bc bot likes to scream
-"""
-#FIXME add variety
 def censor(orig):
+    #FIXME add variety
+    """
+    takes in a string with swear words, censors & capitalizes it
+    @param orig: string to be censored
+    @return new: censored string in all caps bc bot likes to scream
+    """
     new = re.sub(r'hell', 'heck', orig, flags=re.IGNORECASE)
     return new.upper()
 
