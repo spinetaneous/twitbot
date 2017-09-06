@@ -6,7 +6,9 @@ each entry is in the following format:
 """
 
 words = {
+"hella" : ["a heck of a lot"],
 "hell" : ["heck", "h-e-double-hockey-sticks"],
+"fucker" : ["fricker"],
 "fuck" : ["frick", "fudge"],
 "shit" : ["turd", "shoot", "sheesh"],
 "crap" : ["doodoo", "caca", "poopoo", "poopie"],
@@ -14,6 +16,6 @@ words = {
 "bastard" : ["booger snot", "fartknocker"],
 "tf" : ["the heckle"],
 "af" : ["as frick"],
-"wtf" : ["kiss my grits", "heavens to betsy", "what the what", "what the devil"],
+"wtf" : ["kiss my grits", "heavens to betsy", "shut the front door", "what the devil"],
 "wth" : ["gee whiz", "geeze louise", "gee whillikers"]
 }
