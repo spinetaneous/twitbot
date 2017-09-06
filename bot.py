@@ -2,6 +2,7 @@
 the 'brain' of the bot
 """
 import tweepy #twitter API
+import re #regex
 from secrets import * #get keys from secrets.py
 
 #OAuth authentication
@@ -24,7 +25,7 @@ this is so that i don't bother anyone while i'm testing the bot
 """ #FIXME be able to tweet with mentions and links
 def find_lonely_tweet(search_results):
     for tweet in search_results: #go through search_results...
-        if '@' and 'https'and 'RT' not in tweet.text: #...and find a tweet that isn't a mention
+        if "@" and "https" and "RT" not in tweet.text: #...and find a tweet that isn't a mention
             return tweet
             #FIXME what to do if can't find tweet?
 
@@ -42,21 +43,10 @@ takes in a string with swear words, censors & capitalizes it
 @param orig: string to be censored
 @return new: censored string in all caps bc bot likes to scream
 """
-#FIXME censorship erases punctuation e.g. hell!!!! -> HECK
 #FIXME add variety
 def censor(orig):
-    orig_words = orig.lower().split() #list of words in original string
-    new_words = ["" for x in range(len(orig_words))] #words that will comprise new string
-
-    for _ in range(len(orig_words)):
-        if "hell" in orig_words[_]:
-            new_words[_] = "heck" #replace hell with heck
-        else:
-            new_words[_] = orig_words[_] #otherwise don't change the word
-        new_words[_] = new_words[_].upper() #capitalize word
-
-    new = " ".join(new_words) #create new string
-    return new
+    new = re.sub(r'hell', 'heck', orig)
+    return new.upper()
 
 orig_tweet = find_lonely_tweet(search_results)
 print(orig_tweet.text)
