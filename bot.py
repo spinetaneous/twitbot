@@ -15,7 +15,8 @@ api = tweepy.API(auth)
 
 #find a tweet with a swear word
 #for now, the swear word is hard coded just to test things out #FIXME
-search_results = api.search("hell", "en", "en", 1)
+search_results = api.search("hell", lang="en", rpp=100)
+
 def find_lonely_tweet(search_results):
     #FIXME be able to tweet with mentions and links
     """
@@ -28,6 +29,7 @@ def find_lonely_tweet(search_results):
     for tweet in search_results: #go through search_results...
         if "@" not in tweet.text and "https" not in tweet.text and "RT" not in tweet.text: #...and find a tweet that isn't a mention
             return tweet
+
             #FIXME what to do if can't find tweet?
 
 def change_tweet(tweet):
@@ -49,11 +51,14 @@ def censor(orig):
     """
     #for every key in cuss words
     for key in cuss.words.keys():
-        pass #FIXME
-    #new replacement pattern = key as string literal
+        #new replacement pattern = key as string literal
 
-    #check original string for words to replace
-    new = re.sub(r'hell', 'heck', orig, flags=re.IGNORECASE)
+        #check original string for words to replace
+        #FIXME only uses first entry in list; should be random later
+        new = re.sub(r'hell', cuss.words[key][0], orig, flags=re.IGNORECASE)
+
+        orig = new #reassign orig
+        #print(key, cuss.words[key][0], new)
     return new.upper()
 
 #FIXME printing stuff here just 4 development reasonz
@@ -62,7 +67,7 @@ try:
     print(orig_tweet.text)
     new_tweet = change_tweet(orig_tweet)
     print(new_tweet.text)
-except:
-    pass
 
-#api.update_status(new_tweet.text)
+    #api.update_status(new_tweet.text)
+except AttributeError:
+    print("couldn't find a tweet")
