@@ -51,12 +51,9 @@ def censor(orig):
     """
     #for every key in cuss words
     for key in cuss.words.keys():
-        #new replacement pattern = key as string literal
-
         #check original string for words to replace
         #FIXME only uses first entry in list; should be random later
-        new = re.sub(r'hell', cuss.words[key][0], orig, flags=re.IGNORECASE)
-
+        new = re.sub(key, cuss.words[key][0], orig, flags=re.IGNORECASE
         orig = new #reassign orig
         #print(key, cuss.words[key][0], new)
     return new.upper()
