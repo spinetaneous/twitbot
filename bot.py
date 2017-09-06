@@ -45,7 +45,7 @@ takes in a string with swear words, censors & capitalizes it
 """
 #FIXME add variety
 def censor(orig):
-    new = re.sub(r'hell', 'heck', orig)
+    new = re.sub(r'hell', 'heck', orig, flags=re.IGNORECASE)
     return new.upper()
 
 orig_tweet = find_lonely_tweet(search_results)

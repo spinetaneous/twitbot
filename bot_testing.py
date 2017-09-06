@@ -14,6 +14,7 @@ class TestBotMethods(unittest.TestCase):
         self.assertEqual(bot.censor("hell,,,,"), "HECK,,,,")
         self.assertEqual(bot.censor("hella cool !hell!"), "HECKA COOL !HECK!")
         self.assertEqual(bot.censor("hell o"), "HECK O")
+        self.assertEqual(bot.censor("HELL"), "HECK")
 
 if __name__ == '__main__':
     unittest.main()
