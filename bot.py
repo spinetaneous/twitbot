@@ -24,8 +24,9 @@ this is so that i don't bother anyone while i'm testing the bot
 """ #FIXME be able to tweet with mentions and links
 def find_lonely_tweet(search_results):
     for tweet in search_results: #go through search_results...
-        if '@' and 'https' not in tweet.text: #...and find a tweet that isn't a mention
+        if '@' and 'https'and 'RT' not in tweet.text: #...and find a tweet that isn't a mention
             return tweet
+            #FIXME what to do if can't find tweet?
 
 """
 censors tweet with a silly swear word using censor()
@@ -42,6 +43,7 @@ takes in a string with swear words, censors & capitalizes it
 @return new: censored string in all caps bc bot likes to scream
 """
 #FIXME censorship erases punctuation e.g. hell!!!! -> HECK
+#FIXME add variety
 def censor(orig):
     orig_words = orig.lower().split() #list of words in original string
     new_words = ["" for x in range(len(orig_words))] #words that will comprise new string
@@ -57,7 +59,8 @@ def censor(orig):
     return new
 
 orig_tweet = find_lonely_tweet(search_results)
+print(orig_tweet.text)
 new_tweet = change_tweet(orig_tweet)
 print(new_tweet.text)
 
-#api.update_status(new_tweet.text.upper())
+#api.update_status(new_tweet.text)
