@@ -4,6 +4,7 @@ the 'brain' of the bot
 import tweepy #twitter API
 import re #regex
 from secrets import * #get keys from secrets.py
+import cuss #the dictionary of cuss words
 
 #OAuth authentication
 auth = tweepy.OAuthHandler(C_KEY, C_SECRET)
@@ -46,15 +47,22 @@ def censor(orig):
     @param orig: string to be censored
     @return new: censored string in all caps bc bot likes to scream
     """
+    #for every key in cuss words
+    for key in cuss.words.keys():
+        pass #FIXME
+    #new replacement pattern = key as string literal
+
+    #check original string for words to replace
     new = re.sub(r'hell', 'heck', orig, flags=re.IGNORECASE)
     return new.upper()
 
+#FIXME printing stuff here just 4 development reasonz
 try:
     orig_tweet = find_lonely_tweet(search_results)
     print(orig_tweet.text)
     new_tweet = change_tweet(orig_tweet)
     print(new_tweet.text)
-except TweepError:
+except:
     pass
 
 #api.update_status(new_tweet.text)
