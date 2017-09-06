@@ -49,9 +49,12 @@ def censor(orig):
     new = re.sub(r'hell', 'heck', orig, flags=re.IGNORECASE)
     return new.upper()
 
-orig_tweet = find_lonely_tweet(search_results)
-print(orig_tweet.text)
-new_tweet = change_tweet(orig_tweet)
-print(new_tweet.text)
+try:
+    orig_tweet = find_lonely_tweet(search_results)
+    print(orig_tweet.text)
+    new_tweet = change_tweet(orig_tweet)
+    print(new_tweet.text)
+except TweepError:
+    pass
 
 #api.update_status(new_tweet.text)
