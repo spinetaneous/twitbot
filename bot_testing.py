@@ -9,8 +9,9 @@ class TestBotMethods(unittest.TestCase):
 
     """ test censor() """
     def test_censor(self):
-        self.assertEqual(bot.censor("this is a string"),"THIS IS A STRING")
+        #censor hell
         self.assertEqual(bot.censor("what the hell!"), "WHAT THE HECK!")
+        self.assertEqual(bot.censor("this is a string"),"THIS IS A STRING")
         self.assertEqual(bot.censor("hell,,,,"), "HECK,,,,")
         self.assertEqual(bot.censor("hella cool !hell!"), "HECKA COOL !HECK!")
         self.assertEqual(bot.censor("hell o"), "HECK O")
