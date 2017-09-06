@@ -6,8 +6,8 @@ each entry is in the following format:
 """
 
 words = {
-"hella" : ["a heck of a lot"],
 "hell" : ["heck", "h-e-double-hockey-sticks"],
+"hella" : ["a heck of a lot"], #FIXME switching hell and hella -> mistranslation
 "fucker" : ["fricker"],
 "fuck" : ["frick", "fudge"],
 "shit" : ["turd", "shoot", "sheesh"],
