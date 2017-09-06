@@ -17,5 +17,8 @@ words = {
 "tf" : ["the heckle"],
 "af" : ["as frick"],
 "wtf" : ["kiss my grits", "heavens to betsy", "shut the front door", "what the devil"],
-"wth" : ["gee whiz", "geeze louise", "gee whillikers"]
+"wth" : ["gee whiz", "geeze louise", "gee whillikers"],
+"cunt" : ["pleasure orb", "clam tongue"],
+"pussy" : ["snatch", "beaver", "vajayjay"],
+"dick" : ["long boi", "donger", "ding-dong", "pleasure rod"]
 }
