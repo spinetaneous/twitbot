@@ -3,6 +3,7 @@ the 'brain' of the bot
 """
 import tweepy #twitter API
 import re #regex
+import random #used to choose swears & their replacements
 from secrets import * #get keys from secrets.py
 import cuss #the dictionary of cuss words
 
@@ -13,12 +14,24 @@ api = tweepy.API(auth)
 
 #api.update_status("GEE WHIZ I CAN TWEET NOW")
 
+
+def find_tweet():
+    #FIXME isn't actually listening/streaming
+    #FIXME tweet with mentions & links/don't use "lonely" tweets? maybe
+    """
+    finds a tweet to censor
+    """
+    tweet = None #we don't have a tweet yet
+    #choose a random cuss word to censor
+    swear = random.choice(list(cuss.words))
+    print(swear)
+    #find a suitable tweet with that word
+find_tweet() #FIXME DEL L8R
+
 #find a tweet with a swear word
 #for now, the swear word is hard coded just to test things out #FIXME
-search_results = api.search("hell", lang="en", rpp=100)
-
+search_results = api.search("hell", lang="en", rpp=100) #FIXME DEL L8R
 def find_lonely_tweet(search_results):
-    #FIXME be able to tweet with mentions and links
     """
     goes through a list of tweets and finds one that isn't a mention
     it's a lonely tweet because it doesn't mention anyone or have media
@@ -29,7 +42,6 @@ def find_lonely_tweet(search_results):
     for tweet in search_results: #go through search_results...
         if "@" not in tweet.text and "https" not in tweet.text and "RT" not in tweet.text: #...and find a tweet that isn't a mention
             return tweet
-
             #FIXME what to do if can't find tweet?
 
 def change_tweet(tweet):
