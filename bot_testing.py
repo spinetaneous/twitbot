@@ -9,7 +9,7 @@ class TestBotMethods(unittest.TestCase):
 
     """ test censor() """
     def test_censor(self):
-        #censor hell
+        #hell
         self.assertEqual(bot.censor("what the hell!"), "WHAT THE HECK!")
         self.assertEqual(bot.censor("this is a string"),"THIS IS A STRING")
         self.assertEqual(bot.censor("hell,,,,"), "HECK,,,,")
@@ -17,8 +17,14 @@ class TestBotMethods(unittest.TestCase):
         self.assertEqual(bot.censor("hell o"), "HECK O")
         self.assertEqual(bot.censor("HELL"), "HECK")
 
-        #censor hella
+        #hella
         self.assertEqual(bot.censor("hella"), "A HECKA LOTTA")
 
+        #af
+        self.assertEqual(bot.censor("dank af"), "DANK AS FRICK")
+        #self.assertEqual(bot.censor("after"), "AFTER") #FIXME
+
+        #misc
+        self.assertEqual(bot.censor("shitty fucking dicks"), "UNFORTUNATE IN A POOPY MANNER FRICKING LONG BOIS")
 if __name__ == '__main__':
     unittest.main()
