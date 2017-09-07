@@ -60,7 +60,8 @@ def censor(orig):
     for key in cuss.words.keys():
         #check original string for words to replace
         #FIXME only uses first entry in list; should be random later
-        new = re.sub(key, cuss.words[key][0], orig, flags=re.IGNORECASE)
+        #new = re.sub(key, cuss.words[key][0], orig, flags=re.IGNORECASE)
+        new = re.sub(key, cuss.words[key][0], orig, flags=re.IGNORECASE) #compatible with test suite
         orig = new #reassign orig
         #print(key, cuss.words[key][0], new)
     return new.upper()
