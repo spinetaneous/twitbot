@@ -12,9 +12,6 @@ auth = tweepy.OAuthHandler(C_KEY, C_SECRET)
 auth.set_access_token(A_TOKEN, A_TOKEN_SECRET)
 api = tweepy.API(auth)
 
-#api.update_status("GEE WHIZ I CAN TWEET NOW")
-
-
 def find_tweet():
     #FIXME isn't actually listening/streaming
     #FIXME tweet with mentions & links/don't use "lonely" tweets? maybe
@@ -24,13 +21,11 @@ def find_tweet():
     tweet = None #we don't have a tweet yet
     #choose a random cuss word to censor
     swear = random.choice(list(cuss.words))
-    print(swear)
+    print(swear) #FIXME DEL L8R
     #find a suitable tweet with that word
-find_tweet() #FIXME DEL L8R
+    search_results = api.search(swear, lang="en", rpp=100)
+    return find_lonely_tweet(search_results)
 
-#find a tweet with a swear word
-#for now, the swear word is hard coded just to test things out #FIXME
-search_results = api.search("hell", lang="en", rpp=100) #FIXME DEL L8R
 def find_lonely_tweet(search_results):
     """
     goes through a list of tweets and finds one that isn't a mention
@@ -65,14 +60,14 @@ def censor(orig):
     for key in cuss.words.keys():
         #check original string for words to replace
         #FIXME only uses first entry in list; should be random later
-        new = re.sub(key, cuss.words[key][0], orig, flags=re.IGNORECASE)
+        new = re.sub(r'\b'+key+r'\b', cuss.words[key][0], orig, flags=re.IGNORECASE)
         orig = new #reassign orig
         #print(key, cuss.words[key][0], new)
     return new.upper()
 
 #FIXME printing stuff here just 4 development reasonz
 try:
-    orig_tweet = find_lonely_tweet(search_results)
+    orig_tweet = find_tweet()
     print(orig_tweet.text)
     new_tweet = change_tweet(orig_tweet)
     print(new_tweet.text)
