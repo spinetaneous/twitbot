@@ -6,7 +6,7 @@ import bot
 
 """ tests the various methods in bot.py """
 class TestBotMethods(unittest.TestCase):
-
+#FIXME separate into multiple test cases with 1-2 asserts in each
     """ test censor() """
     def test_censor(self):
         #hell
